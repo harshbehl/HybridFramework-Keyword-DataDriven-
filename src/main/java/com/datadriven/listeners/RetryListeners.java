@@ -3,7 +3,7 @@ package com.datadriven.listeners;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-public class TestngListeners implements IRetryAnalyzer {
+public class RetryListeners implements IRetryAnalyzer {
 	private int initCount = 0;
 	private int retryCount = 3;
 
