@@ -3,13 +3,20 @@ package com.datadriven.base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+
+import com.datadriven.listeners.DriverListeners;
 
 public class Page {
-
+	private static EventFiringWebDriver eventDriver;
 	private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
+	static DriverListeners dListener = new DriverListeners();
 
 	protected static void setDriver(WebDriver driver) {
-		webDriver.set(driver);
+		eventDriver = new EventFiringWebDriver(driver);
+		eventDriver.register(dListener);
+		webDriver.set(eventDriver);
+
 	}
 
 	protected static WebDriver getDriver() {
