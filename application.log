@@ -1,0 +1,92 @@
+2019-03-30 18:49:06,394  INFO [main] ExcelTest:21 - ****************************** Starting test cases execution  *****************************************
+2019-03-30 18:49:10,090  INFO [main] ExcelTest:25 - launching chrome broswer
+2019-03-30 18:49:36,550  INFO [main] ExcelTest:32 - entering application URL
+2019-03-30 18:49:36,550  WARN [main] ExcelTest:33 - Hey this just a warning message
+2019-03-30 18:49:36,551 FATAL [main] ExcelTest:34 - hey this is just fatal error message
+2019-03-30 18:49:36,551 DEBUG [main] ExcelTest:35 - this is debug message
+2019-03-30 18:49:36,559  INFO [main] TestListeners:12 - The test method freeCrmTitleTest Started
+2019-03-30 18:49:36,559  INFO [main] TestListeners:13 - The Start time 1553951976551
+2019-03-30 18:49:36,560  INFO [main] ExcelTest:41 - ****************************** starting test case *****************************************
+2019-03-30 18:49:36,560  INFO [main] ExcelTest:42 - ****************************** freeCrmTitleTest *****************************************
+2019-03-30 18:49:36,727  INFO [main] ExcelTest:45 - login page title is--->Free CRM software in the cloud
+2019-03-30 18:49:37,484  INFO [main] ExcelTest:71 - ****************************** Browser is closed *****************************************
+2019-03-30 18:49:37,488  INFO [main] ExcelTest:21 - ****************************** Starting test cases execution  *****************************************
+2019-03-30 18:49:39,913  INFO [main] ExcelTest:25 - launching chrome broswer
+2019-03-30 18:49:44,168  INFO [main] ExcelTest:32 - entering application URL
+2019-03-30 18:49:44,168  WARN [main] ExcelTest:33 - Hey this just a warning message
+2019-03-30 18:49:44,170 FATAL [main] ExcelTest:34 - hey this is just fatal error message
+2019-03-30 18:49:44,170 DEBUG [main] ExcelTest:35 - this is debug message
+2019-03-30 18:49:44,172  INFO [main] TestListeners:12 - The test method freeCrmTitleTest Started
+2019-03-30 18:49:44,173  INFO [main] TestListeners:13 - The Start time 1553951984170
+2019-03-30 18:49:44,173  INFO [main] ExcelTest:41 - ****************************** starting test case *****************************************
+2019-03-30 18:49:44,174  INFO [main] ExcelTest:42 - ****************************** freeCrmTitleTest *****************************************
+2019-03-30 18:49:44,345  INFO [main] ExcelTest:45 - login page title is--->Free CRM software in the cloud
+2019-03-30 18:49:45,056  INFO [main] ExcelTest:71 - ****************************** Browser is closed *****************************************
+2019-03-30 18:49:45,062  INFO [main] ExcelTest:21 - ****************************** Starting test cases execution  *****************************************
+2019-03-30 18:49:47,477  INFO [main] ExcelTest:25 - launching chrome broswer
+2019-03-30 18:49:52,080  INFO [main] ExcelTest:32 - entering application URL
+2019-03-30 18:49:52,081  WARN [main] ExcelTest:33 - Hey this just a warning message
+2019-03-30 18:49:52,081 FATAL [main] ExcelTest:34 - hey this is just fatal error message
+2019-03-30 18:49:52,081 DEBUG [main] ExcelTest:35 - this is debug message
+2019-03-30 18:49:52,083  INFO [main] TestListeners:12 - The test method freeCrmTitleTest Started
+2019-03-30 18:49:52,084  INFO [main] TestListeners:13 - The Start time 1553951992082
+2019-03-30 18:49:52,084  INFO [main] ExcelTest:41 - ****************************** starting test case *****************************************
+2019-03-30 18:49:52,084  INFO [main] ExcelTest:42 - ****************************** freeCrmTitleTest *****************************************
+2019-03-30 18:49:52,263  INFO [main] ExcelTest:45 - login page title is--->Free CRM software in the cloud
+2019-03-30 18:49:52,974  INFO [main] ExcelTest:71 - ****************************** Browser is closed *****************************************
+2019-03-30 18:49:52,977  INFO [main] ExcelTest:21 - ****************************** Starting test cases execution  *****************************************
+2019-03-30 18:49:55,439  INFO [main] ExcelTest:25 - launching chrome broswer
+2019-03-30 18:50:18,473  INFO [main] ExcelTest:32 - entering application URL
+2019-03-30 18:50:18,474  WARN [main] ExcelTest:33 - Hey this just a warning message
+2019-03-30 18:50:18,474 FATAL [main] ExcelTest:34 - hey this is just fatal error message
+2019-03-30 18:50:18,474 DEBUG [main] ExcelTest:35 - this is debug message
+2019-03-30 18:50:18,476  INFO [main] TestListeners:12 - The test method freeCrmTitleTest Started
+2019-03-30 18:50:18,477  INFO [main] TestListeners:13 - The Start time 1553952018475
+2019-03-30 18:50:18,477  INFO [main] ExcelTest:41 - ****************************** starting test case *****************************************
+2019-03-30 18:50:18,477  INFO [main] ExcelTest:42 - ****************************** freeCrmTitleTest *****************************************
+2019-03-30 18:50:18,643  INFO [main] ExcelTest:45 - login page title is--->Free CRM software in the cloud
+2019-03-30 18:50:19,366  INFO [main] ExcelTest:71 - ****************************** Browser is closed *****************************************
+2019-03-30 18:50:19,376  INFO [main] ExcelTest:21 - ****************************** Starting test cases execution  *****************************************
+2019-03-30 18:50:21,829  INFO [main] ExcelTest:25 - launching chrome broswer
+2019-03-30 18:50:26,203  INFO [main] ExcelTest:32 - entering application URL
+2019-03-30 18:50:26,203  WARN [main] ExcelTest:33 - Hey this just a warning message
+2019-03-30 18:50:26,203 FATAL [main] ExcelTest:34 - hey this is just fatal error message
+2019-03-30 18:50:26,203 DEBUG [main] ExcelTest:35 - this is debug message
+2019-03-30 18:50:26,205  INFO [main] TestListeners:12 - The test method freemCRMLogoTest Started
+2019-03-30 18:50:26,205  INFO [main] TestListeners:13 - The Start time 1553952026204
+2019-03-30 18:50:26,207  INFO [main] ExcelTest:55 - ****************************** starting test case *****************************************
+2019-03-30 18:50:26,207  INFO [main] ExcelTest:56 - ****************************** freemCRMLogoTest *****************************************
+2019-03-30 18:50:37,189  INFO [main] ExcelTest:71 - ****************************** Browser is closed *****************************************
+2019-03-30 18:50:37,190  INFO [main] ExcelTest:21 - ****************************** Starting test cases execution  *****************************************
+2019-03-30 18:50:39,582  INFO [main] ExcelTest:25 - launching chrome broswer
+2019-03-30 18:50:43,709  INFO [main] ExcelTest:32 - entering application URL
+2019-03-30 18:50:43,710  WARN [main] ExcelTest:33 - Hey this just a warning message
+2019-03-30 18:50:43,710 FATAL [main] ExcelTest:34 - hey this is just fatal error message
+2019-03-30 18:50:43,710 DEBUG [main] ExcelTest:35 - this is debug message
+2019-03-30 18:50:43,712  INFO [main] TestListeners:12 - The test method freemCRMLogoTest Started
+2019-03-30 18:50:43,712  INFO [main] TestListeners:13 - The Start time 1553952043711
+2019-03-30 18:50:43,712  INFO [main] ExcelTest:55 - ****************************** starting test case *****************************************
+2019-03-30 18:50:43,713  INFO [main] ExcelTest:56 - ****************************** freemCRMLogoTest *****************************************
+2019-03-30 18:50:54,653  INFO [main] ExcelTest:71 - ****************************** Browser is closed *****************************************
+2019-03-30 18:50:54,656  INFO [main] ExcelTest:21 - ****************************** Starting test cases execution  *****************************************
+2019-03-30 18:50:57,074  INFO [main] ExcelTest:25 - launching chrome broswer
+2019-03-30 18:51:21,011  INFO [main] ExcelTest:32 - entering application URL
+2019-03-30 18:51:21,011  WARN [main] ExcelTest:33 - Hey this just a warning message
+2019-03-30 18:51:21,011 FATAL [main] ExcelTest:34 - hey this is just fatal error message
+2019-03-30 18:51:21,012 DEBUG [main] ExcelTest:35 - this is debug message
+2019-03-30 18:51:21,014  INFO [main] TestListeners:12 - The test method freemCRMLogoTest Started
+2019-03-30 18:51:21,014  INFO [main] TestListeners:13 - The Start time 1553952081012
+2019-03-30 18:51:21,014  INFO [main] ExcelTest:55 - ****************************** starting test case *****************************************
+2019-03-30 18:51:21,014  INFO [main] ExcelTest:56 - ****************************** freemCRMLogoTest *****************************************
+2019-03-30 18:51:31,935  INFO [main] ExcelTest:71 - ****************************** Browser is closed *****************************************
+2019-03-30 18:51:31,938  INFO [main] ExcelTest:21 - ****************************** Starting test cases execution  *****************************************
+2019-03-30 18:51:34,342  INFO [main] ExcelTest:25 - launching chrome broswer
+2019-03-30 18:51:39,280  INFO [main] ExcelTest:32 - entering application URL
+2019-03-30 18:51:39,281  WARN [main] ExcelTest:33 - Hey this just a warning message
+2019-03-30 18:51:39,281 FATAL [main] ExcelTest:34 - hey this is just fatal error message
+2019-03-30 18:51:39,281 DEBUG [main] ExcelTest:35 - this is debug message
+2019-03-30 18:51:39,283  INFO [main] TestListeners:12 - The test method freemCRMLogoTest Started
+2019-03-30 18:51:39,283  INFO [main] TestListeners:13 - The Start time 1553952099281
+2019-03-30 18:51:39,283  INFO [main] ExcelTest:55 - ****************************** starting test case *****************************************
+2019-03-30 18:51:39,283  INFO [main] ExcelTest:56 - ****************************** freemCRMLogoTest *****************************************
+2019-03-30 18:51:50,287  INFO [main] ExcelTest:71 - ****************************** Browser is closed *****************************************

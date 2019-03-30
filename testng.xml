@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ParallelExeuction and Reporting" >
+	<listeners>
+
+		<listener
+			class-name="com.datadriven.listeners.Retry">
+		</listener>
+		<listener class-name="com.datadriven.listeners.TestListeners">
+		</listener>
+	</listeners>
+	<test name="demo Test">
+		<classes>
+			<class name="com.datadriven.redifftests.ExcelTest" />
+		</classes>
+	</test> <!-- Test -->
+
+
+
+</suite> <!-- Suite -->

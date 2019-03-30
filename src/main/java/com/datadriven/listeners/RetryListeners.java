@@ -10,11 +10,13 @@ public class RetryListeners implements IRetryAnalyzer {
 	@Override
 	public boolean retry(ITestResult result) {
 		boolean tresult = false;
-		if (result.isSuccess()) {
-			tresult = true;
-		} else if (!result.isSuccess() && initCount < retryCount) {
-
-			initCount++;
+		if(!result.isSuccess())
+		{
+		if (initCount < retryCount) 
+		{initCount++;
+		tresult=true;
+			
+		}
 		}
 		return tresult;
 
