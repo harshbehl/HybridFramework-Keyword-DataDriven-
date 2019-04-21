@@ -1,13 +1,18 @@
 package com.datadriven.listeners;
 
+
+
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
-public class DriverListeners implements WebDriverEventListener {
 
+
+public class DriverListeners implements WebDriverEventListener {
+      private static Logger log=Logger.getLogger(DriverListeners.class);
 	@Override
 	public void beforeAlertAccept(WebDriver driver) {
 		
@@ -34,7 +39,7 @@ public class DriverListeners implements WebDriverEventListener {
 
 	@Override
 	public void beforeNavigateTo(String url, WebDriver driver) {
-		System.out.println();
+	
 		
 	}
 
@@ -82,7 +87,7 @@ public class DriverListeners implements WebDriverEventListener {
 
 	@Override
 	public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -94,13 +99,13 @@ public class DriverListeners implements WebDriverEventListener {
 
 	@Override
 	public void beforeClickOn(WebElement element, WebDriver driver) {
-		// TODO Auto-generated method stub
+		log.info("clicking on the webElement"+element.getAttribute("value"));
 		
 	}
 
 	@Override
 	public void afterClickOn(WebElement element, WebDriver driver) {
-		// TODO Auto-generated method stub
+		log.info("clicked on the webElement"+element.getAttribute("value"));
 		
 	}
 

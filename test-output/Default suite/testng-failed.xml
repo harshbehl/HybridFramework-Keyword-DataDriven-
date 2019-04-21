@@ -3,14 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.datadriven.redifftests.ExcelTest">
+      <class name="BasicTest">
         <methods>
-          <include name="tearDown"/>
-          <include name="freeCrmTitleTest"/>
-          <include name="freemCRMLogoTest"/>
-          <include name="setup"/>
+          <include name="setupDriver"/>
+          <include name="tearUp"/>
+          <include name="sampleTest"/>
         </methods>
-      </class> <!-- com.datadriven.redifftests.ExcelTest -->
+      </class> <!-- BasicTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
