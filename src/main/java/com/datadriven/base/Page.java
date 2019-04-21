@@ -10,7 +10,7 @@ import com.datadriven.listeners.DriverListeners;
 public class Page {
 	private static EventFiringWebDriver eventDriver;
 	private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
-	static DriverListeners dListener = new DriverListeners();
+	private static DriverListeners dListener = new DriverListeners();
 
 	protected static void setDriver(WebDriver driver) {
 		eventDriver = new EventFiringWebDriver(driver);

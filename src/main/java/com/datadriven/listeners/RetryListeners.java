@@ -1,7 +1,7 @@
 package com.datadriven.listeners;
 
-import org.testng.IRetryAnalyzer;
-import org.testng.ITestResult;
+import org.testng.*;
+
 
 public class RetryListeners implements IRetryAnalyzer {
 	private int initCount = 0;
