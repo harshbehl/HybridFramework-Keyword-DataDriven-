@@ -2,6 +2,7 @@ package com.datadriven.base;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -23,14 +24,20 @@ public class Page {
 	static FileInputStream fis=null;
 	  static Properties prop=null;
 	
-	protected static void setDriver(WebDriver driver) throws IOException {
+	protected static void setDriver(WebDriver driver)  {
 		eventDriver = new EventFiringWebDriver(driver);
 		eventDriver.register(dListener);
 		webDriver.set(eventDriver);
-	 fis=new FileInputStream(new File("E:\\SeleniumFrameworks\\DataDrivenFrameworks\\src\\main\\java\\com\\datadriven\\locators\\Locators.properties"));
-		  prop=new Properties();
-		  prop.load(fis);
+	
 	}
+
+	public static void setLocProperties() throws FileNotFoundException, IOException {
+		fis=new FileInputStream(new File("E:\\SeleniumFrameworks\\DataDrivenFrameworks\\src\\main\\java\\com\\datadriven\\locators\\Locators.properties"));
+			  prop=new Properties();
+			  prop.load(fis);
+	}
+	
+	
 
 	protected static WebDriver getDriver() {
 		return webDriver.get();

@@ -5,9 +5,11 @@
     <classes>
       <class name="BasicTest">
         <methods>
-          <include name="setupDriver"/>
-          <include name="tearUp"/>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="afterMethod"/>
           <include name="sampleTest"/>
+          <include name="beforeMethod"/>
         </methods>
       </class> <!-- BasicTest -->
     </classes>
