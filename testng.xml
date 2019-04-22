@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="ParallelExeuction and Reporting" >
+<suite name="ParallelExeuction and Reporting" parallel="methods" thread-count="2" >
 	<listeners>
 
 		<listener
@@ -10,8 +10,8 @@
 		</listener>
 	</listeners>
 	<test name="demo Test">
-		<classes>
-			<class name="com.datadriven.redifftests.ExcelTest" />
+		<classes >
+			<class name="com.datadriven.tests.BasicTest" />
 		</classes>
 	</test> <!-- Test -->
 

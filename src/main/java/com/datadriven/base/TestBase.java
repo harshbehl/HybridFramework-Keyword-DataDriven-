@@ -7,24 +7,20 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.ITestContext;
-import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+import com.datadriven.reporting.ExtentReporting;
 
 public class TestBase extends Page {
 	WebDriver driver = null;
-	ExtentHtmlReporter reporter = null;
-	ExtentReports report = null;
 
-	public ExtentTest test = null;
+
 
 	@BeforeMethod
 	public void beforeMethod(Method testngTest) throws FileNotFoundException, IOException {
@@ -35,11 +31,7 @@ public class TestBase extends Page {
 		driver.manage().window().maximize();
 		setDriver(driver);
 		setLocProperties();
-
-		test = report.createTest(testngTest.getName());
-		test.assignAuthor("Harsh Behl");
-		test.assignCategory("Regression");
-
+        ExtentReporting.CreateTestCase(testngTest.getName(),"Harsh Behl","Regression");
 	}
 
 	@AfterMethod
@@ -47,37 +39,35 @@ public class TestBase extends Page {
 		if (result.isSuccess()) {
 			getDriver().quit();
 			fis.close();
-			report.flush();
+			ExtentReporting.flush();
 		} else if (result.getStatus() == 3) {
-			test.skip("The Test Case is Skipped");
+			ExtentReporting.getTest().skip("The Test Case" +result.getMethod()+" is skipped");
 			getDriver().quit();
 			fis.close();
-			report.flush();
-			
+			ExtentReporting.flush();
+
 		} else if (result.getStatus() == 2) {
-			test.fail("The Test case is failed.");
-			report.flush();
+			ExtentReporting.getTest().log(Status.FAIL,
+			result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot("FailedScreenshot")).build());
 			getDriver().quit();
 			fis.close();
-		
-			
+			ExtentReporting.flush();
+
 		}
 	}
 
 	@BeforeSuite
 	public void beforeSuite() {
-		reporter = new ExtentHtmlReporter(
-				"E:\\SeleniumFrameworks\\DataDrivenFrameworks\\test-output\\ExtentReports\\Extent.html");
-		report = new ExtentReports();
-		report.attachReporter(reporter);
+	ExtentReporting.setReporter();
+	ExtentReporting.setExtent();
 
 	}
 
 	@AfterSuite
 	public void afterSuite() {
-		reporter = null;
-		report = null;
-
+		/*
+		 * reporter = null; report = null;
+		 */
 	}
 
 }

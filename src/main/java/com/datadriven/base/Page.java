@@ -41,7 +41,7 @@ public class Page {
 
 	public static void setLocProperties() throws FileNotFoundException, IOException {
 		fis = new FileInputStream(new File(
-				"E:\\SeleniumFrameworks\\DataDrivenFrameworks\\src\\main\\java\\com\\datadriven\\locators\\Locators.properties"));
+				"E:\\SeleniumFrameworks\\DataDrivenFrameworks\\src\\main\\resources\\Locators.properties"));
 		prop = new Properties();
 		prop.load(fis);
 	}
