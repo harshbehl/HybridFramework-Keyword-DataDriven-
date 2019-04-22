@@ -3,7 +3,7 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="BasicTest">
+      <class name="com.datadriven.tests.BasicTest">
         <methods>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
@@ -11,7 +11,7 @@
           <include name="sampleTest"/>
           <include name="beforeMethod"/>
         </methods>
-      </class> <!-- BasicTest -->
+      </class> <!-- com.datadriven.tests.BasicTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

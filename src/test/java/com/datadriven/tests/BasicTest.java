@@ -4,6 +4,7 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.datadriven.base.TestBase;
@@ -15,7 +16,7 @@ public class BasicTest extends TestBase{
 
 	
 	@Test()
-	public void sampleTest() throws IOException
+	public void Logiin() throws IOException
 	{
 		
 
@@ -29,6 +30,7 @@ public class BasicTest extends TestBase{
 		submitForm("xpath_google.homepage.searchButton");
 		ExtentReporting.getTest().pass("search Button Clicked successfully");
          Assert.fail();
+      
 	}
 
 	@Test()

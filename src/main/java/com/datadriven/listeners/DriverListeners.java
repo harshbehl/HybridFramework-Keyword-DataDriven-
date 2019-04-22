@@ -99,7 +99,7 @@ public class DriverListeners implements WebDriverEventListener {
 
 	@Override
 	public void beforeClickOn(WebElement element, WebDriver driver) {
-		log.info("clicking on the webElement"+element.getAttribute("value"));
+		log.info("clicking on the +9-*webElement"+element.getAttribute("value"));
 		
 	}
 
