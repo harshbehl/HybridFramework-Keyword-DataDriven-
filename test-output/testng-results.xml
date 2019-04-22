@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="17880" started-at="2019-04-22T06:07:35Z" finished-at="2019-04-22T06:07:53Z">
+  <suite name="Default suite" duration-ms="23110" started-at="2019-04-22T09:34:27Z" finished-at="2019-04-22T09:34:50Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="17880" started-at="2019-04-22T06:07:35Z" finished-at="2019-04-22T06:07:53Z">
+    <test name="Default test" duration-ms="23110" started-at="2019-04-22T09:34:27Z" finished-at="2019-04-22T09:34:50Z">
       <class name="BasicTest">
-        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:BasicTest@5a8e6209]" name="beforeSuite" is-config="true" duration-ms="467" started-at="2019-04-22T06:07:35Z" finished-at="2019-04-22T06:07:35Z">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:BasicTest@5a8e6209]" name="beforeSuite" is-config="true" duration-ms="460" started-at="2019-04-22T09:34:26Z" finished-at="2019-04-22T09:34:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:BasicTest@5a8e6209]" name="beforeMethod" is-config="true" duration-ms="9811" started-at="2019-04-22T06:07:35Z" finished-at="2019-04-22T06:07:45Z">
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:BasicTest@5a8e6209]" name="beforeMethod" is-config="true" duration-ms="10575" started-at="2019-04-22T09:34:27Z" finished-at="2019-04-22T09:34:37Z">
           <params>
             <param index="0">
               <value>
@@ -22,15 +22,22 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="sampleTest()[pri:0, instance:BasicTest@5a8e6209]" name="sampleTest" duration-ms="3777" started-at="2019-04-22T06:07:45Z" finished-at="2019-04-22T06:07:49Z">
+        <test-method status="PASS" signature="sampleTest()[pri:0, instance:BasicTest@5a8e6209]" name="sampleTest" duration-ms="4532" started-at="2019-04-22T09:34:37Z" finished-at="2019-04-22T09:34:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- sampleTest -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:BasicTest@5a8e6209]" name="afterMethod" is-config="true" duration-ms="4235" started-at="2019-04-22T06:07:49Z" finished-at="2019-04-22T06:07:53Z">
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:BasicTest@5a8e6209]" name="afterMethod" is-config="true" duration-ms="7944" started-at="2019-04-22T09:34:42Z" finished-at="2019-04-22T09:34:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=sampleTest status=SUCCESS method=BasicTest.sampleTest()[pri:0, instance:BasicTest@5a8e6209] output={null}]]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:BasicTest@5a8e6209]" name="afterSuite" is-config="true" duration-ms="1" started-at="2019-04-22T06:07:54Z" finished-at="2019-04-22T06:07:54Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:BasicTest@5a8e6209]" name="afterSuite" is-config="true" duration-ms="1" started-at="2019-04-22T09:34:50Z" finished-at="2019-04-22T09:34:50Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

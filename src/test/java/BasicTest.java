@@ -15,10 +15,10 @@ public class BasicTest extends TestBase{
 	{
 		
 
-	  test.info("Navigating to https://google.com");
+	    test.info("Navigating to https://google.com");
 		getDriver().get("https://google.com");
 		test.pass("Navigated to google.com successfully");
-
+test.addScreenCaptureFromPath(takeScreenShot("Navigation"));
 		setText("css_google.homepage.searchText", "Jatin Behl");
 		test.pass("Text entered successfully");
 		submitForm("xpath_google.homepage.searchButton");

@@ -4,12 +4,19 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -21,47 +28,62 @@ public class Page {
 	private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 	private static DriverListeners dListener = new DriverListeners();
 	private static Logger log = Logger.getLogger(Page.class);
-	static FileInputStream fis=null;
-	  static Properties prop=null;
-	
-	protected static void setDriver(WebDriver driver)  {
+	static FileInputStream fis = null;
+	static Properties prop = null;
+	static Calendar cal = null;
+
+	protected static void setDriver(WebDriver driver) {
 		eventDriver = new EventFiringWebDriver(driver);
 		eventDriver.register(dListener);
 		webDriver.set(eventDriver);
-	
+
 	}
 
 	public static void setLocProperties() throws FileNotFoundException, IOException {
-		fis=new FileInputStream(new File("E:\\SeleniumFrameworks\\DataDrivenFrameworks\\src\\main\\java\\com\\datadriven\\locators\\Locators.properties"));
-			  prop=new Properties();
-			  prop.load(fis);
+		fis = new FileInputStream(new File(
+				"E:\\SeleniumFrameworks\\DataDrivenFrameworks\\src\\main\\java\\com\\datadriven\\locators\\Locators.properties"));
+		prop = new Properties();
+		prop.load(fis);
 	}
-	
-	
 
 	protected static WebDriver getDriver() {
 		return webDriver.get();
 	}
 
+	protected static void getURL(String url) {
+		getDriver().get(url);
+	}
+
+	protected static void navigateToUrl(String url) {
+		getDriver().navigate().to(url);
+	}
+
+	protected static void navigateForward() {
+		getDriver().navigate().forward();
+	}
+
+	protected static void navigateBackward() {
+		getDriver().navigate().back();
+	}
 
 	protected static WebElement getWebElement(String locator) {
 		WebElement element = null;
 		try {
-			if(locator.startsWith("xpath")) {
+			if (locator.startsWith("xpath")) {
 				element = getDriver().findElement(By.xpath(prop.getProperty(locator)));
-			} else if(locator.startsWith("css")) {
+			} else if (locator.startsWith("css")) {
 				element = getDriver().findElement(By.cssSelector(prop.getProperty(locator)));
-			} else if(locator.startsWith("id")) {
+			} else if (locator.startsWith("id")) {
 				element = getDriver().findElement(By.id(prop.getProperty(locator)));
-			} else if(locator.startsWith("name")) {
+			} else if (locator.startsWith("name")) {
 				element = getDriver().findElement(By.name(prop.getProperty(locator)));
-			} else if(locator.startsWith("linktext")) {
+			} else if (locator.startsWith("linktext")) {
 				element = getDriver().findElement(By.linkText(prop.getProperty(locator)));
-			} else if(locator.startsWith("plinktext")) {
+			} else if (locator.startsWith("plinktext")) {
 				element = getDriver().findElement(By.partialLinkText(prop.getProperty(locator)));
-			} else if(locator.startsWith("tag")) {
+			} else if (locator.startsWith("tag")) {
 				element = getDriver().findElement(By.tagName(prop.getProperty(locator)));
-			} else if(locator.startsWith("class")) {
+			} else if (locator.startsWith("class")) {
 				element = getDriver().findElement(By.className(prop.getProperty(locator)));
 			}
 		} catch (NoSuchElementException E) {
@@ -73,21 +95,21 @@ public class Page {
 
 	protected static boolean isElementExists(String locator) {
 		int size = 0;
-		if(locator.startsWith("xpath")) {
+		if (locator.startsWith("xpath")) {
 			size = getDriver().findElements(By.xpath(prop.getProperty(locator))).size();
-		} else if(locator.startsWith("css")) {
+		} else if (locator.startsWith("css")) {
 			size = getDriver().findElements(By.cssSelector(prop.getProperty(locator))).size();
-		} else if(locator.startsWith("id")) {
+		} else if (locator.startsWith("id")) {
 			size = getDriver().findElements(By.id(prop.getProperty(locator))).size();
-		} else if(locator.startsWith("name")) {
+		} else if (locator.startsWith("name")) {
 			size = getDriver().findElements(By.name(prop.getProperty(locator))).size();
-		} else if(locator.startsWith("linktext")) {
+		} else if (locator.startsWith("linktext")) {
 			size = getDriver().findElements(By.linkText(prop.getProperty(locator))).size();
-		} else if(locator.startsWith("plinktext")) {
+		} else if (locator.startsWith("plinktext")) {
 			size = getDriver().findElements(By.partialLinkText(prop.getProperty(locator))).size();
-		} else if(locator.startsWith("tag")) {
+		} else if (locator.startsWith("tag")) {
 			size = getDriver().findElements(By.tagName(prop.getProperty(locator))).size();
-		} else if(locator.startsWith("class")) {
+		} else if (locator.startsWith("class")) {
 			size = getDriver().findElements(By.className(prop.getProperty(locator))).size();
 		}
 
@@ -100,21 +122,21 @@ public class Page {
 	protected static boolean isElementEnabled(String locator) {
 		Boolean flag = false;
 		try {
-			if(locator.startsWith("xpath")) {
+			if (locator.startsWith("xpath")) {
 				flag = getDriver().findElement(By.xpath(prop.getProperty(locator))).isEnabled();
-			} else if(locator.startsWith("css")) {
+			} else if (locator.startsWith("css")) {
 				flag = getDriver().findElement(By.cssSelector(prop.getProperty(locator))).isEnabled();
-			} else if(locator.startsWith("id")) {
+			} else if (locator.startsWith("id")) {
 				flag = getDriver().findElement(By.id(prop.getProperty(locator))).isEnabled();
-			} else if(locator.startsWith("name")) {
+			} else if (locator.startsWith("name")) {
 				flag = getDriver().findElement(By.name(prop.getProperty(locator))).isEnabled();
-			} else if(locator.startsWith("linktext")) {
+			} else if (locator.startsWith("linktext")) {
 				flag = getDriver().findElement(By.linkText(prop.getProperty(locator))).isEnabled();
-			} else if(locator.startsWith("plinktext")) {
+			} else if (locator.startsWith("plinktext")) {
 				flag = getDriver().findElement(By.partialLinkText(prop.getProperty(locator))).isEnabled();
-			} else if(locator.startsWith("tag")) {
+			} else if (locator.startsWith("tag")) {
 				flag = getDriver().findElement(By.tagName(prop.getProperty(locator))).isEnabled();
-			} else if(locator.startsWith("class")) {
+			} else if (locator.startsWith("class")) {
 				flag = getDriver().findElement(By.className(prop.getProperty(locator))).isEnabled();
 			}
 		} catch (NoSuchElementException E) {
@@ -126,21 +148,21 @@ public class Page {
 	protected static boolean isElementDisplayed(String locator) {
 		Boolean flag = false;
 		try {
-			if(locator.startsWith("xpath")) {
+			if (locator.startsWith("xpath")) {
 				flag = getDriver().findElement(By.xpath(prop.getProperty(locator))).isDisplayed();
-			} else if(locator.startsWith("css")) {
+			} else if (locator.startsWith("css")) {
 				flag = getDriver().findElement(By.cssSelector(prop.getProperty(locator))).isDisplayed();
-			} else if(locator.startsWith("id")) {
+			} else if (locator.startsWith("id")) {
 				flag = getDriver().findElement(By.id(prop.getProperty(locator))).isDisplayed();
-			} else if(locator.startsWith("name")) {
+			} else if (locator.startsWith("name")) {
 				flag = getDriver().findElement(By.name(prop.getProperty(locator))).isDisplayed();
-			} else if(locator.startsWith("linktext")) {
+			} else if (locator.startsWith("linktext")) {
 				flag = getDriver().findElement(By.linkText(prop.getProperty(locator))).isDisplayed();
-			} else if(locator.startsWith("plinktext")) {
+			} else if (locator.startsWith("plinktext")) {
 				flag = getDriver().findElement(By.partialLinkText(prop.getProperty(locator))).isDisplayed();
-			} else if(locator.startsWith("tag")) {
+			} else if (locator.startsWith("tag")) {
 				flag = getDriver().findElement(By.tagName(prop.getProperty(locator))).isDisplayed();
-			} else if(locator.startsWith("class")) {
+			} else if (locator.startsWith("class")) {
 				flag = getDriver().findElement(By.className(prop.getProperty(locator))).isDisplayed();
 			}
 		} catch (NoSuchElementException E) {
@@ -152,21 +174,21 @@ public class Page {
 	protected static boolean isElementSelected(String locator) {
 		Boolean flag = false;
 		try {
-			if(locator.startsWith("xpath")) {
+			if (locator.startsWith("xpath")) {
 				flag = getDriver().findElement(By.xpath(prop.getProperty(locator))).isSelected();
-			} else if(locator.startsWith("css")) {
+			} else if (locator.startsWith("css")) {
 				flag = getDriver().findElement(By.cssSelector(prop.getProperty(locator))).isSelected();
-			} else if(locator.startsWith("id")) {
+			} else if (locator.startsWith("id")) {
 				flag = getDriver().findElement(By.id(prop.getProperty(locator))).isSelected();
-			} else if(locator.startsWith("name")) {
+			} else if (locator.startsWith("name")) {
 				flag = getDriver().findElement(By.name(prop.getProperty(locator))).isSelected();
-			} else if(locator.startsWith("linktext")) {
+			} else if (locator.startsWith("linktext")) {
 				flag = getDriver().findElement(By.linkText(prop.getProperty(locator))).isSelected();
-			} else if(locator.startsWith("plinktext")) {
+			} else if (locator.startsWith("plinktext")) {
 				flag = getDriver().findElement(By.partialLinkText(prop.getProperty(locator))).isSelected();
-			} else if(locator.startsWith("tag")) {
+			} else if (locator.startsWith("tag")) {
 				flag = getDriver().findElement(By.tagName(prop.getProperty(locator))).isSelected();
-			} else if(locator.startsWith("class")) {
+			} else if (locator.startsWith("class")) {
 				flag = getDriver().findElement(By.className(prop.getProperty(locator))).isSelected();
 			}
 		} catch (NoSuchElementException E) {
@@ -176,23 +198,23 @@ public class Page {
 	}
 
 	protected static void setText(String locator, String text) throws IOException {
-	
+
 		try {
-			if(locator.startsWith("xpath")) {
+			if (locator.startsWith("xpath")) {
 				getDriver().findElement(By.xpath(prop.getProperty(locator))).sendKeys(text);
-			} else if(locator.startsWith("css")) {
+			} else if (locator.startsWith("css")) {
 				getDriver().findElement(By.cssSelector(prop.getProperty(locator))).sendKeys(text);
-			} else if(locator.startsWith("id")) {
+			} else if (locator.startsWith("id")) {
 				getDriver().findElement(By.id(prop.getProperty(locator))).sendKeys(text);
-			} else if(locator.startsWith("name")) {
+			} else if (locator.startsWith("name")) {
 				getDriver().findElement(By.name(prop.getProperty(locator))).sendKeys(text);
-			} else if(locator.startsWith("linktext")) {
+			} else if (locator.startsWith("linktext")) {
 				getDriver().findElement(By.linkText(prop.getProperty(locator))).sendKeys(text);
-			} else if(locator.startsWith("plinktext")) {
+			} else if (locator.startsWith("plinktext")) {
 				getDriver().findElement(By.partialLinkText(prop.getProperty(locator))).sendKeys(text);
-			} else if(locator.startsWith("tag")) {
+			} else if (locator.startsWith("tag")) {
 				getDriver().findElement(By.tagName(prop.getProperty(locator))).sendKeys(text);
-			} else if(locator.startsWith("class")) {
+			} else if (locator.startsWith("class")) {
 				getDriver().findElement(By.className(prop.getProperty(locator))).sendKeys(text);
 			}
 		} catch (NoSuchElementException E) {
@@ -204,23 +226,23 @@ public class Page {
 	}
 
 	protected static void clickElement(String locator) throws IOException {
-	
+
 		try {
-			if(locator.startsWith("xpath")) {
+			if (locator.startsWith("xpath")) {
 				getDriver().findElement(By.xpath(prop.getProperty(locator))).click();
-			} else if(locator.startsWith("css")) {
+			} else if (locator.startsWith("css")) {
 				getDriver().findElement(By.cssSelector(prop.getProperty(locator))).click();
-			} else if(locator.startsWith("id")) {
+			} else if (locator.startsWith("id")) {
 				getDriver().findElement(By.id(prop.getProperty(locator))).click();
-			} else if(locator.startsWith("name")) {
+			} else if (locator.startsWith("name")) {
 				getDriver().findElement(By.name(prop.getProperty(locator))).click();
-			} else if(locator.startsWith("linktext")) {
+			} else if (locator.startsWith("linktext")) {
 				getDriver().findElement(By.linkText(prop.getProperty(locator))).click();
-			} else if(locator.startsWith("plinktext")) {
+			} else if (locator.startsWith("plinktext")) {
 				getDriver().findElement(By.partialLinkText(prop.getProperty(locator))).click();
-			} else if(locator.startsWith("tag")) {
+			} else if (locator.startsWith("tag")) {
 				getDriver().findElement(By.tagName(prop.getProperty(locator))).click();
-			} else if(locator.startsWith("class")) {
+			} else if (locator.startsWith("class")) {
 				getDriver().findElement(By.className(prop.getProperty(locator))).click();
 			}
 		} catch (StaleElementReferenceException E) {
@@ -232,23 +254,23 @@ public class Page {
 	}
 
 	protected static void submitForm(String locator) throws IOException {
-		
+
 		try {
-			if(locator.startsWith("xpath")) {
+			if (locator.startsWith("xpath")) {
 				getDriver().findElement(By.xpath(prop.getProperty(locator))).submit();
-			} else if(locator.startsWith("css")) {
+			} else if (locator.startsWith("css")) {
 				getDriver().findElement(By.cssSelector(prop.getProperty(locator))).submit();
-			} else if(locator.startsWith("id")) {
+			} else if (locator.startsWith("id")) {
 				getDriver().findElement(By.id(prop.getProperty(locator))).submit();
-			} else if(locator.startsWith("name")) {
+			} else if (locator.startsWith("name")) {
 				getDriver().findElement(By.name(prop.getProperty(locator))).submit();
-			} else if(locator.startsWith("linktext")) {
+			} else if (locator.startsWith("linktext")) {
 				getDriver().findElement(By.linkText(prop.getProperty(locator))).submit();
-			} else if(locator.startsWith("plinktext")) {
+			} else if (locator.startsWith("plinktext")) {
 				getDriver().findElement(By.partialLinkText(prop.getProperty(locator))).submit();
-			} else if(locator.startsWith("tag")) {
+			} else if (locator.startsWith("tag")) {
 				getDriver().findElement(By.tagName(prop.getProperty(locator))).submit();
-			} else if(locator.startsWith("class")) {
+			} else if (locator.startsWith("class")) {
 				getDriver().findElement(By.className(prop.getProperty(prop.getProperty(locator)))).submit();
 			}
 		} catch (NoSuchElementException E) {
@@ -258,26 +280,48 @@ public class Page {
 
 	protected static void clearData(String locator) {
 		try {
-			if(locator.startsWith("xpath")) {
+			if (locator.startsWith("xpath")) {
 				getDriver().findElement(By.xpath(prop.getProperty(locator))).clear();
-			} else if(locator.startsWith("css")) {
+			} else if (locator.startsWith("css")) {
 				getDriver().findElement(By.cssSelector(prop.getProperty(locator))).clear();
-			} else if(locator.startsWith("id")) {
+			} else if (locator.startsWith("id")) {
 				getDriver().findElement(By.id(prop.getProperty(locator))).clear();
-			} else if(locator.startsWith("name")) {
+			} else if (locator.startsWith("name")) {
 				getDriver().findElement(By.name(prop.getProperty(locator))).clear();
-			} else if(locator.startsWith("linktext")) {
+			} else if (locator.startsWith("linktext")) {
 				getDriver().findElement(By.linkText(prop.getProperty(locator))).clear();
-			} else if(locator.startsWith("plinktext")) {
+			} else if (locator.startsWith("plinktext")) {
 				getDriver().findElement(By.partialLinkText(prop.getProperty(locator))).clear();
-			} else if(locator.startsWith("tag")) {
+			} else if (locator.startsWith("tag")) {
 				getDriver().findElement(By.tagName(prop.getProperty(locator))).clear();
-			} else if(locator.startsWith("class")) {
+			} else if (locator.startsWith("class")) {
 				getDriver().findElement(By.className(prop.getProperty(locator))).clear();
 			}
 		} catch (NoSuchElementException E) {
 			log.debug("Element with " + prop.getProperty(locator) + " not found ");
 		}
+
+	}
+
+	protected static String takeScreenShot(String ScreenShotName) {
+		File src = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+		cal = Calendar.getInstance();
+		Date date = cal.getTime();
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		String formattedDate = dateFormat.format(date);
+		formattedDate = formattedDate.replace(":", "_");
+		File des = new File(System.getProperty("user.dir") + "\\test-output\\ScreenShots\\" + ScreenShotName
+				+ formattedDate + ".png");
+		;
+		try {
+
+			FileUtils.copyFile(src, des);
+			System.out.println(System.getProperty("user.dir"));
+		} catch (IOException e) {
+			log.debug(e.getMessage());
+		}
+		return System.getProperty("user.dir") + "\\test-output\\ScreenShots\\" + ScreenShotName + formattedDate
+				+ ".png";
 
 	}
 
