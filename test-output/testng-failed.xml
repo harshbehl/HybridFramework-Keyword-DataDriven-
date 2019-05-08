@@ -5,11 +5,7 @@
     <classes>
       <class name="com.datadriven.tests.BasicTest">
         <methods>
-          <include name="beforeSuite"/>
-          <include name="afterSuite"/>
-          <include name="afterMethod"/>
-          <include name="sampleTest"/>
-          <include name="beforeMethod"/>
+          <include name="Login"/>
         </methods>
       </class> <!-- com.datadriven.tests.BasicTest -->
     </classes>

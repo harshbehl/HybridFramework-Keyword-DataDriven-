@@ -1,53 +1,32 @@
 package com.datadriven.tests;
-import java.io.IOException;
 
-import org.apache.log4j.Logger;
-import org.testng.Assert;
+import java.util.Hashtable;
+
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
-import com.aventstack.extentreports.MediaEntityBuilder;
 import com.datadriven.base.TestBase;
-import com.datadriven.reporting.ExtentReporting;
+import com.datadriven.utilities.ExcelUtility;
 
-public class BasicTest extends TestBase{
+public class BasicTest extends TestBase {
+
+	ExcelUtility util = new ExcelUtility("E:\\New Microsoft Excel Worksheet.xlsx");
+
+	@Test(dataProvider = "LoginData")
+	public void Login(Hashtable<String,String> testData)  {
+        System.out.println(util.getCurrentWB().getSheetAt(1).getLastRowNum());
+		System.out.println(testData.get("UserName"));
+		System.out.println(testData.get("Password"));
+		System.out.println(testData.get("Browser"));
 	
-	 private static Logger log=Logger.getLogger(BasicTest.class);
-
-	
-	@Test()
-	public void Logiin() throws IOException
-	{
 		
-
-	   
-		getDriver().get("https://google.com");
-		
-		ExtentReporting.getTest().pass("Navigated to google.com successfully",MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot("Navigated to Screen")).build());
-      
-		setText("css_google.homepage.searchText", "Jatin Behl");
-		
-		submitForm("xpath_google.homepage.searchButton");
-		ExtentReporting.getTest().pass("search Button Clicked successfully");
-         Assert.fail();
-      
 	}
-
-	@Test()
-	public void sampleTest1() throws IOException
-	{
-		
-
-		ExtentReporting.getTest().info("Navigating to https://google.com");
-		getDriver().get("https://google.com");
-		
-		ExtentReporting.getTest().pass("Navigated to google.com successfully",MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot("Navigated to Screen")).build());
-      
-		setText("css_google.homepage.searchText", "Jatin Behl");
-		//ExtentReporting.passStep("Text Entered Successfully", false, null);
-		submitForm("xpath_google.homepage.searchButton");
-		ExtentReporting.getTest().pass("search Button Clicked successfully");
 	
+	
+	@DataProvider(name = "LoginData")
+	public Object[][] getTestData()
+	{  return util.extractTestData("SignUpTest2", "DataSheet");
+		
 		
 	}
 

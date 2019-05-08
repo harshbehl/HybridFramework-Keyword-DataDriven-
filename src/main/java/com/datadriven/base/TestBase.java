@@ -20,7 +20,7 @@ import com.datadriven.reporting.ExtentReporting;
 public class TestBase extends Page {
 	WebDriver driver = null;
 
-	@BeforeMethod
+	/*@BeforeMethod
 	public void beforeMethod(Method testngTest) throws FileNotFoundException, IOException {
 		System.setProperty("webdriver.gecko.driver", "E:\\Automation\\Drivers\\FirefoxDriver\\geckodriver.exe");
 		driver = new FirefoxDriver();
@@ -61,9 +61,9 @@ public class TestBase extends Page {
 
 	@AfterSuite
 	public void afterSuite() {
-		/*
-		 * reporter = null; report = null;
-		 */
-	}
+		
+		  reporter = null; report = null;
+		 
+}*/
 
 }

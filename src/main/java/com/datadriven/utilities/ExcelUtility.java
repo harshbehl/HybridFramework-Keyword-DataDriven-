@@ -2,43 +2,30 @@ package com.datadriven.utilities;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Hashtable;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.openxml4j.opc.OPCPackage;
-import org.apache.poi.poifs.filesystem.NPOIFSFileSystem;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ExcelUtility {
-	private OPCPackage pkg = null;
-	private NPOIFSFileSystem fs = null;
+
 	private File file = null;
 	private Workbook wb = null;
 	private Sheet sheet = null;
 	private Row row = null;
-	private Cell cell = null;
 	private DataFormatter formatter = new DataFormatter();
 
 	public ExcelUtility(String Path) {
 		try {
 			file = new File(Path);
-			if (Path.endsWith("xlsx")) {
-				pkg = OPCPackage.open(file);
-				wb = new XSSFWorkbook(pkg);
-			} else if (Path.endsWith("xls")) {
-				fs = new NPOIFSFileSystem(file);
-				wb = new HSSFWorkbook(fs.getRoot(), false);
-			} else
-				System.out.println("This is not an Excel file");
-		} catch (Throwable t) {
-			System.out.println(t.getMessage());
+
+			wb = WorkbookFactory.create(file);
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}
@@ -48,59 +35,46 @@ public class ExcelUtility {
 	}
 
 	public void closeWorkBook() {
-		if (fs != null)
-			try {
-				fs.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		else if (pkg != null)
-			try {
-				pkg.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	}
 
-	public Boolean isSheetEmpty(String sheetName) {
-		if (getCurrentWB().getSheet(sheetName).getLastRowNum() == -1)
-			return true;
-		else
-			return false;
-	}
-
-	public Boolean isSheetEmpty(int sheetIndex) {
-		if (getCurrentWB().getSheetAt(sheetIndex).getLastRowNum() == -1)
-			return true;
-		else
-			return false;
+		try {
+			wb.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public int getRowCount(String sheetName) {
-		sheet = getCurrentWB().getSheet(sheetName);
-		return sheet.getLastRowNum() + 1;
+		int rowCount = 0;
+		try {
+			sheet = getCurrentWB().getSheet(sheetName);
+			rowCount = sheet.getLastRowNum() + 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rowCount;
 
 	}
 
 	public int getRowCount(int sheetIndex) {
+		int rowCount = 0;
 		try {
 			sheet = getCurrentWB().getSheetAt(sheetIndex);
-		} catch (Throwable t) {
-			System.out.println(t.getMessage());
+			rowCount = sheet.getLastRowNum() + 1;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return sheet.getLastRowNum() + 1;
+		return rowCount;
 	}
 
 	public String getCellData(String sheetName, int rowNum, int colNum) {
 		String cellData = null;
 		try {
 			sheet = getCurrentWB().getSheet(sheetName);
-			cellData = formatter.formatCellValue(sheet.getRow(rowNum + 1).getCell(colNum + 1));
+			cellData = formatter.formatCellValue(sheet.getRow(rowNum - 1).getCell(colNum - 1));
 
-		} catch (Throwable t) {
-			System.out.println(t.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return cellData;
 	}
@@ -109,23 +83,57 @@ public class ExcelUtility {
 		String cellData = new String();
 		try {
 			sheet = getCurrentWB().getSheetAt(sheetIndex);
-			cellData = formatter.formatCellValue(sheet.getRow(rowNum + 1).getCell(colNum + 1));
+			cellData = formatter.formatCellValue(sheet.getRow(rowNum - 1).getCell(colNum - 1));
 
-		} catch (Throwable t) {
-			t.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return cellData;
+	}
+
+	public String getCellData(int sheetIndex, int rowNum, String colName) {
+		String cellData = new String();
+		try {
+		sheet = getCurrentWB().getSheetAt(sheetIndex);
+		int colIndex = getColNumber(sheetIndex, colName);
+		if (colIndex != -1) {
+			cellData = getCellData(sheetIndex, rowNum, colIndex - 1);
+			return cellData;
+		}}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return "";
+
+	}
+
+	public String getCellData(String sheetName, int rowNum, String colName) {
+		String cellData = new String();
+		try {
+		sheet = getCurrentWB().getSheet(sheetName);
+		int colIndex = getColNumber(sheetName, colName);
+		if (colIndex != -1) {
+			cellData = getCellData(sheetName, rowNum, colIndex);
+			return cellData;
+		}}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return "";
+
 	}
 
 	public boolean isRowEmpty(String sheetName, int rowNum) {
 		Boolean result = false;
 		try {
 			sheet = getCurrentWB().getSheet(sheetName);
-			if (sheet.getRow(rowNum + 1) == null)
+			if (sheet.getRow(rowNum - 1) == null)
 				result = true;
 
-		} catch (Throwable t) {
-			System.out.println(t.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return result;
@@ -134,71 +142,145 @@ public class ExcelUtility {
 
 	public boolean isRowEmpty(int sheetIndex, int rowNum) {
 		Boolean result = false;
+
 		try {
 			sheet = getCurrentWB().getSheetAt(sheetIndex);
-			if (sheet.getRow(rowNum + 1) == null)
+			if (sheet.getRow(rowNum - 1) == null)
 				result = true;
 
-		} catch (Throwable t) {
-			System.out.println(t.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return result;
 
 	}
 
-	public HashMap<Integer, List<String>> getSheetData(int sheetIndex) {
-		HashMap<Integer, List<String>> data = new HashMap<Integer, List<String>>();
-		if (!isSheetEmpty(sheetIndex))
-			try {
-				sheet = getCurrentWB().getSheetAt(sheetIndex);
-				if (getRowCount(sheetIndex) != 0) {
-					List<String> rowData = null;
-					for (int i = 0; i < getRowCount(sheetIndex); i++) {
-						row = sheet.getRow(i);
-						rowData = new ArrayList<String>();
+	public int getColNumber(int sheetIndex, String cellData)
 
-						for (int j = 0; j < row.getLastCellNum(); j++) {
-							cell = row.getCell(j);
-							rowData.add(formatter.formatCellValue(cell));
+	{    try {
+		sheet = getCurrentWB().getSheetAt(sheetIndex);
+		for (int rowNum = 0; rowNum < sheet.getLastRowNum(); rowNum++) {
+			row = sheet.getRow(rowNum);
+			if (row != null)
+				for (int colNum = 0; colNum < row.getLastCellNum(); colNum++) {
+					System.out.println(formatter.formatCellValue(row.getCell(colNum)));
+					if (formatter.formatCellValue(row.getCell(colNum)).equalsIgnoreCase(cellData))
 
-						}
-						data.put(i, rowData);
-					}
+						return colNum + 1;
+
 				}
 
-			} catch (Throwable t) {
-				t.printStackTrace();
-			}
-		return data;
-
+		}}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+		return -1;
 	}
 
-	public HashMap<Integer, List<String>> getSheetData(String sheetName) {
-		HashMap<Integer, List<String>> data = new HashMap<Integer, List<String>>();
-		if (!isSheetEmpty(sheetName))
-			try {
-				sheet = getCurrentWB().getSheet(sheetName);
-				if (getRowCount(sheetName) != 0) {
+	public int getColNumber(String sheetName, String cellData)
 
-					for (int i = 0; i < getRowCount(sheetName); i++) {
-						row = sheet.getRow(i);
+	{    try {
+		sheet = getCurrentWB().getSheet(sheetName);
+		for (int rowNum = 0; rowNum < sheet.getLastRowNum(); rowNum++) {
+			row = sheet.getRow(rowNum);
+			if (row != null)
+				for (int colNum = 1; colNum <= row.getLastCellNum(); colNum++) {
+					if (formatter.formatCellValue(row.getCell(colNum)).equalsIgnoreCase(cellData))
 
-						List<String> rowData = new ArrayList<String>();
+						return colNum + 1;
 
-						for (int j = 0; j < row.getLastCellNum(); j++) {
-							cell = row.getCell(j);
-							rowData.add(formatter.formatCellValue(cell));
-
-						}
-						data.put(i, rowData);
-					}
 				}
 
-			} catch (Throwable t) {
-				System.out.println(t.getMessage());
+		}}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+		return -1;
+	}
+
+	public int getRowNumber(String sheetName, String cellData)
+
+	{   try {
+		sheet = getCurrentWB().getSheet(sheetName);
+		for (int rowNum = 0; rowNum < sheet.getLastRowNum(); rowNum++) {
+			row = sheet.getRow(rowNum);
+			if (row != null)
+				for (int colNum = 0; colNum < row.getLastCellNum(); colNum++) {
+
+					if (formatter.formatCellValue(row.getCell(colNum)).equalsIgnoreCase(cellData))
+
+						return rowNum + 1;
+
+				}
+		}
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+		return -1;
+	}
+
+	public int getRowNumber(int sheetIndex, String cellData)
+
+	{   try {
+		sheet = getCurrentWB().getSheetAt(sheetIndex);
+		for (int rowNum = 0; rowNum < sheet.getLastRowNum(); rowNum++) {
+			row = sheet.getRow(rowNum);
+			if (row != null)
+				for (int colNum = 0; colNum < row.getLastCellNum(); colNum++) {
+					System.out.println(formatter.formatCellValue(row.getCell(colNum)));
+					if (formatter.formatCellValue(row.getCell(colNum)).equalsIgnoreCase(cellData))
+
+						return rowNum + 1;
+
+				}
+
+		}}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+		return -1;
+	}
+
+	public Object[][] extractTestData(String TCID, String testDataSheet) {
+		Object[][] dataArray=null;
+		try
+		{
+		int testCaseRowNum = getRowNumber(testDataSheet, TCID);
+		int dataKeysRow = testCaseRowNum + 1;
+		int testDataRow = testCaseRowNum + 2;
+		int rowCounter = 0;
+		int dataKeysColCount = getCurrentWB().getSheet(testDataSheet).getRow(dataKeysRow).getLastCellNum();
+		int count = 0;
+		int testDataRowCounter = testDataRow;
+
+		while (!isRowEmpty(testDataSheet, testDataRowCounter)) {
+			testDataRowCounter++;
+			rowCounter++;
+		}
+		dataArray = new Object[rowCounter][1];
+		for (int i = testDataRow; i < testDataRow + rowCounter; i++) {
+			Hashtable<String, String> dataTable = new Hashtable<String, String>();
+			for (int c = 1; c <= dataKeysColCount; c++) {
+				if (!isRowEmpty(testDataSheet, i))
+					dataTable.put(getCellData(testDataSheet, dataKeysRow, c), getCellData(testDataSheet, i, c));
+
 			}
-		return data;
+
+			dataArray[count][0] = dataTable;
+			count++;
+		}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return dataArray;
 
 	}
 
