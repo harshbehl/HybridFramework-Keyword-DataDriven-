@@ -3,11 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.datadriven.tests.BasicTest">
+      <class name="com.datadriven.tests.LoginTest">
         <methods>
-          <include name="Login"/>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="afterMethod"/>
+          <include name="Test" invocation-numbers="0 1 2 3 4"/>
         </methods>
-      </class> <!-- com.datadriven.tests.BasicTest -->
+      </class> <!-- com.datadriven.tests.LoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

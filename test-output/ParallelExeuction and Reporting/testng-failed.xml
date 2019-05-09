@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [ParallelExeuction and Reporting]">
+<suite thread-count="2" guice-stage="DEVELOPMENT" name="Failed suite [ParallelExeuction and Reporting]" parallel="methods">
   <listeners>
     <listener class-name="com.datadriven.listeners.Retry"/>
     <listener class-name="com.datadriven.listeners.TestListeners"/>
   </listeners>
-  <test thread-count="5" name="demo Test(failed)">
+  <test thread-count="2" name="demo Test(failed)" parallel="methods">
     <classes>
-      <class name="com.datadriven.redifftests.ExcelTest">
+      <class name="com.datadriven.tests.BasicTest">
         <methods>
-          <include name="tearDown"/>
-          <include name="freeCrmTitleTest"/>
-          <include name="freemCRMLogoTest"/>
-          <include name="setup"/>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="afterMethod"/>
+          <include name="LoginTest"/>
         </methods>
-      </class> <!-- com.datadriven.redifftests.ExcelTest -->
+      </class> <!-- com.datadriven.tests.BasicTest -->
     </classes>
   </test> <!-- demo Test(failed) -->
 </suite> <!-- Failed suite [ParallelExeuction and Reporting] -->

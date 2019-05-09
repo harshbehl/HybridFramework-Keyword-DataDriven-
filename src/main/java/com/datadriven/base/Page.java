@@ -42,7 +42,7 @@ public class Page {
 
 	public static void setLocProperties() throws FileNotFoundException, IOException {
 		fis = new FileInputStream(
-				new File("E:\\SeleniumFrameworks\\DataDrivenFrameworks\\src\\main\\resources\\Locators.properties"));
+				new File(Constants.LOCATORS_PROPERTIES_FILE_PATH));
 		prop = new Properties();
 		prop.load(fis);
 	}
@@ -68,7 +68,7 @@ public class Page {
 	}
 
 	protected static WebElement getWebElement(String locator) {
-		wait = new WebDriverWait(getDriver(), 20);
+		wait = new WebDriverWait(getDriver(), Constants.WEBDRIVER_EXPLICIT_WAIT);
 		WebElement element = null;
 		try {
 			if (locator.startsWith("xpath")) {
@@ -184,7 +184,7 @@ public class Page {
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 		String formattedDate = dateFormat.format(date);
 		formattedDate = formattedDate.replace(":", "_");
-		File des = new File(System.getProperty("user.dir") + "\\test-output\\ScreenShots\\" + ScreenShotName
+		File des = new File(Constants.SCREENSHOTS_PATH + ScreenShotName
 				+ formattedDate + ".png");
 		;
 		try {
@@ -194,7 +194,7 @@ public class Page {
 		} catch (IOException e) {
 			log.debug(e.getMessage());
 		}
-		return System.getProperty("user.dir") + "\\test-output\\ScreenShots\\" + ScreenShotName + formattedDate
+		return Constants.SCREENSHOTS_PATH + ScreenShotName + formattedDate
 				+ ".png";
 
 	}

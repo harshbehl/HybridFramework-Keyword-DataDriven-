@@ -10,24 +10,30 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.datadriven.reporting.ExtentReporting;
+import com.datadriven.utilities.ExcelUtility;
 
 public class TestBase extends Page {
 	WebDriver driver = null;
 
-	/*@BeforeMethod
+	protected ExcelUtility util = new ExcelUtility(Constants.EXCEL_SUITE_PATH+"\\"+Constants.TEST_SUITE_NAME+".xlsx");
+	
+
 	public void beforeMethod(Method testngTest) throws FileNotFoundException, IOException {
-		System.setProperty("webdriver.gecko.driver", "E:\\Automation\\Drivers\\FirefoxDriver\\geckodriver.exe");
+		;
+		System.setProperty("webdriver.gecko.driver", Constants.GECKO_DRIVER_PATH);
 		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Constants.WEBDRIVER_IMPLICIT_WAIT, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(Constants.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		setDriver(driver);
+		
+       
+   
 		setLocProperties();
 		ExtentReporting.CreateTestCase(testngTest.getName(), "Harsh Behl", "Regression");
 	}
@@ -61,9 +67,7 @@ public class TestBase extends Page {
 
 	@AfterSuite
 	public void afterSuite() {
-		
-		  reporter = null; report = null;
-		 
-}*/
+
+	}
 
 }
