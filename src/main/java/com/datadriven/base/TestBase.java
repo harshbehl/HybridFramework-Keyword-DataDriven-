@@ -1,73 +1,96 @@
 package com.datadriven.base;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.concurrent.TimeUnit;
+import java.util.Properties;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 
-import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.Status;
 import com.datadriven.reporting.ExtentReporting;
 import com.datadriven.utilities.ExcelUtility;
 
 public class TestBase extends Page {
-	WebDriver driver = null;
-
-	protected ExcelUtility util = new ExcelUtility(Constants.EXCEL_SUITE_PATH+"\\"+Constants.TEST_SUITE_NAME+".xlsx");
+	public String testCaseName;
+	public Properties locProp;
+	public Properties envProp;
+	public ExcelUtility util;
+	private FileInputStream fisLoc;
+	private FileInputStream fisEnv;
+	public DriverScript driverScript;
 	
-
-	public void beforeMethod(Method testngTest) throws FileNotFoundException, IOException {
-		;
-		System.setProperty("webdriver.gecko.driver", Constants.GECKO_DRIVER_PATH);
-		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(Constants.WEBDRIVER_IMPLICIT_WAIT, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(Constants.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
-		setDriver(driver);
-		
-       
-   
-		setLocProperties();
-		ExtentReporting.CreateTestCase(testngTest.getName(), "Harsh Behl", "Regression");
-	}
-
-	@AfterMethod
-	public void afterMethod(ITestResult result) throws IOException {
-		if (result.isSuccess()) {
-			tearUp();
-			ExtentReporting.flush();
-		} else if (result.getStatus() == 3) {
-			ExtentReporting.getTest().skip("The Test Case" + result.getMethod() + " is skipped");
-
-			tearUp();
-			ExtentReporting.flush();
-
-		} else if (result.getStatus() == 2) {
-			ExtentReporting.getTest().log(Status.FAIL, result.getThrowable(),
-					MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot("FailedScreenshot")).build());
-			tearUp();
-			ExtentReporting.flush();
-
-		}
-	}
-
+	
 	@BeforeSuite
-	public void beforeSuite() {
+	public void init() throws FileNotFoundException {
+		util = new ExcelUtility(Constants.EXCEL_SUITE_PATH+"\\"+Constants.TEST_SUITE_NAME+".xlsx");
+		fisLoc = new FileInputStream(new File(Constants.LOC_PROP_PATH));
+		fisEnv = new FileInputStream(new File(Constants.ENV_PROP_PATH));
 		ExtentReporting.setReporter();
-		ExtentReporting.setExtent();
 
 	}
 
-	@AfterSuite
-	public void afterSuite() {
+	@BeforeTest
+	public void setUp() {
+		driverScript=new DriverScript();
+		testCaseName = this.getClass().getSimpleName();
+		locProp = new Properties();
+		envProp = new Properties();
+		try {
+			locProp.load(fisLoc);
+			envProp.load(fisEnv);
+			driverScript.setEnvProp(envProp);
+			driverScript.setLocProp(locProp);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ExtentReporting.CreateTestCase(testCaseName, "Harsh Behl", "Regression");
 
 	}
+	
+	@BeforeMethod
+	public void createTestCase()
+	{ExtentReporting.CreateTestCase(testCaseName, "Harsh Behl", "Regression");
+		
+	}
+	
+	@AfterMethod
+	public void quitDriver()
+	{   ExtentReporting.flush();
+		driverScript.quit();	
+		
+	}
+	
+	@AfterTest
+	public void tearUpResources() 
+	{    if(fisLoc!=null)
+		try {
+			fisLoc.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	if(fisEnv!=null)
+		try {
+			fisEnv.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+	}
+	
+	
+	@DataProvider(name = "DataProvider")
+	public Object[][] getTestData()
+	{  return util.extractTestData(testCaseName, Constants.TEST_DATA_SHEET);
+		
+		
+	}
 }

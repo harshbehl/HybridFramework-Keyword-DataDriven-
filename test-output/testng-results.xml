@@ -1,307 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="13" passed="13">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="193" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
+  <suite name="Default suite" duration-ms="91850" started-at="2019-05-12T14:27:08Z" finished-at="2019-05-12T14:28:40Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="193" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-      <class name="com.datadriven.tests.LoginTest">
-        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="beforeSuite" is-config="true" duration-ms="13" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
+    <test name="Default test" duration-ms="91850" started-at="2019-05-12T14:27:08Z" finished-at="2019-05-12T14:28:40Z">
+      <class name="com.datadriven.tests.LoginTestFB">
+        <test-method status="PASS" signature="init()[pri:0, instance:com.datadriven.tests.LoginTestFB@67b92f0a]" name="init" is-config="true" duration-ms="1216" started-at="2019-05-12T14:27:07Z" finished-at="2019-05-12T14:27:08Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeSuite -->
-        <test-method status="PASS" signature="LoginTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="LoginTest" duration-ms="8" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.datadriven.tests.LoginTestFB@67b92f0a]" name="setUp" is-config="true" duration-ms="16" started-at="2019-05-12T14:27:08Z" finished-at="2019-05-12T14:27:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="createTestCase()[pri:0, instance:com.datadriven.tests.LoginTestFB@67b92f0a]" name="createTestCase" is-config="true" duration-ms="1" started-at="2019-05-12T14:27:08Z" finished-at="2019-05-12T14:27:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createTestCase -->
+        <test-method status="PASS" signature="test_LoginTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTestFB@67b92f0a]" name="test_LoginTest" duration-ms="76388" started-at="2019-05-12T14:27:08Z" data-provider="DataProvider" finished-at="2019-05-12T14:28:24Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{Password=123, UserName=Harsh, Browser=Mozilla}]]>
+                <![CDATA[{RunMode=Y, Password=123456, UserName=harsh.behl92@gmail.com, Browser=Mozilla}]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- LoginTest -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="6" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
+        </test-method> <!-- test_LoginTest -->
+        <test-method status="PASS" signature="quitDriver()[pri:0, instance:com.datadriven.tests.LoginTestFB@67b92f0a]" name="quitDriver" is-config="true" duration-ms="2215" started-at="2019-05-12T14:28:24Z" finished-at="2019-05-12T14:28:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quitDriver -->
+        <test-method status="PASS" signature="createTestCase()[pri:0, instance:com.datadriven.tests.LoginTestFB@67b92f0a]" name="createTestCase" is-config="true" duration-ms="1" started-at="2019-05-12T14:28:27Z" finished-at="2019-05-12T14:28:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createTestCase -->
+        <test-method status="PASS" signature="test_LoginTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTestFB@67b92f0a]" name="test_LoginTest" duration-ms="11195" started-at="2019-05-12T14:28:27Z" data-provider="DataProvider" finished-at="2019-05-12T14:28:38Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=LoginTest status=SUCCESS method=LoginTest.LoginTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
+                <![CDATA[{RunMode=Y, Password=123456, UserName=jatin.behl92@gmail.com, Browser=Mozilla}]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="LoginTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="LoginTest" duration-ms="4" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{Password=456, UserName=Jatin, Browser=Chrome}]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- test_LoginTest -->
+        <test-method status="PASS" signature="quitDriver()[pri:0, instance:com.datadriven.tests.LoginTestFB@67b92f0a]" name="quitDriver" is-config="true" duration-ms="1966" started-at="2019-05-12T14:28:38Z" finished-at="2019-05-12T14:28:40Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- LoginTest -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="2" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=LoginTest status=SUCCESS method=LoginTest.LoginTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- quitDriver -->
+        <test-method status="PASS" signature="tearUpResources()[pri:0, instance:com.datadriven.tests.LoginTestFB@67b92f0a]" name="tearUpResources" is-config="true" duration-ms="1" started-at="2019-05-12T14:28:40Z" finished-at="2019-05-12T14:28:40Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="LoginTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="LoginTest" duration-ms="5" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{Password=789, UserName=Karan, Browser=IE}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- LoginTest -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="2" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=LoginTest status=SUCCESS method=LoginTest.LoginTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="SignUpTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="SignUpTest" duration-ms="2" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{ExpectedResult=pass, RunMode=y, Password=123, UserName=Harsh, Actual Result=fail, Browser=Mozilla}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTest -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="1" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=SignUpTest status=SUCCESS method=LoginTest.SignUpTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="SignUpTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="SignUpTest" duration-ms="2" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{ExpectedResult=fail, RunMode=y, Password=456, UserName=Jatin, Actual Result=fail, Browser=Chrome}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTest -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="2" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=SignUpTest status=SUCCESS method=LoginTest.SignUpTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="SignUpTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="SignUpTest" duration-ms="2" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{ExpectedResult=pass, RunMode=n, Password=789, UserName=Karan, Actual Result=fail, Browser=IE}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTest -->
-        <test-method status="PASS" signature="SignUpTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="SignUpTest" duration-ms="2" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{ExpectedResult=fail, RunMode=y, Password=4242, UserName=kirnal, Actual Result=pass, Browser=opera}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTest -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=SignUpTest status=SUCCESS method=LoginTest.SignUpTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=SignUpTest status=SUCCESS method=LoginTest.SignUpTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="SignUpTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="SignUpTest" duration-ms="2" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{ExpectedResult=pass, RunMode=b, Password=2424, UserName=yatin, Actual Result=fail, Browser=edge}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTest -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="1" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=SignUpTest status=SUCCESS method=LoginTest.SignUpTest(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="SignUpTest2(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="SignUpTest2" duration-ms="2" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{ExpectedResult=pass, RunMode=y, Password=123, UserName=Harsh, Actual Result=fail, Browser=Mozilla}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTest2 -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=SignUpTest2 status=SUCCESS method=LoginTest.SignUpTest2(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="SignUpTest2(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="SignUpTest2" duration-ms="2" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{ExpectedResult=fail, RunMode=y, Password=456, UserName=Jatin, Actual Result=fail, Browser=Chrome}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTest2 -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=SignUpTest2 status=SUCCESS method=LoginTest.SignUpTest2(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="SignUpTest2(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="SignUpTest2" duration-ms="1" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{ExpectedResult=pass, RunMode=n, Password=789, UserName=Karan, Actual Result=fail, Browser=IE}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTest2 -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="1" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=SignUpTest2 status=SUCCESS method=LoginTest.SignUpTest2(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="SignUpTest2(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="SignUpTest2" duration-ms="4" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{ExpectedResult=fail, RunMode=y, Password=4242, UserName=kirnal, Actual Result=pass, Browser=opera}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTest2 -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="0" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=SignUpTest2 status=SUCCESS method=LoginTest.SignUpTest2(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="SignUpTest2(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="SignUpTest2" duration-ms="1" started-at="2019-05-09T15:29:51Z" data-provider="DataProvider" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{ExpectedResult=pass, RunMode=b, Password=2424, UserName=yatin, Actual Result=fail, Browser=edge}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SignUpTest2 -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterMethod" is-config="true" duration-ms="15" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=SignUpTest2 status=SUCCESS method=LoginTest.SignUpTest2(java.util.Hashtable)[pri:0, instance:com.datadriven.tests.LoginTest@1165b38] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.datadriven.tests.LoginTest@1165b38]" name="afterSuite" is-config="true" duration-ms="0" started-at="2019-05-09T15:29:51Z" finished-at="2019-05-09T15:29:51Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterSuite -->
-      </class> <!-- com.datadriven.tests.LoginTest -->
+        </test-method> <!-- tearUpResources -->
+      </class> <!-- com.datadriven.tests.LoginTestFB -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
